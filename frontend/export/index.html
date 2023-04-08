@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Chatellite</title>
+    <meta property="og:description" content="Natural language satellite orbit data. Say goodbye to troublesome TLEs and erratic ephemerides. Powered by ChatGPT!">
+    <meta property="og:title" content="Chatellite">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/img/android-chrome-512x512.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="#">Orbit Determinator</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Satellite&nbsp;</a>
+                        <div class="dropdown-menu" id="satellite-name-dropdown"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="alert alert-info text-center" role="alert" id="start-alert"><span class="text-center">Choose a satellite from the list above to start<br></span></div>
+    <div class="container d-flex justify-content-md-end justify-content-lg-end" id="first-message-container">
+        <div class="toast fade hide" role="alert" id="initial-message-toast">
+            <div class="toast-header"><strong class="mr-auto">You</strong><small>Just Now</small></div>
+            <div class="toast-body" role="alert">
+                <p id="initial-message-text"></p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center"><span class="spinner-border text-left" role="status" id="loading-spinner"></span></div>
+    <div class="alert alert-danger text-center" role="alert" id="error-alert">
+        <h4 class="alert-heading">¯\_(ツ)_/¯</h4><span class="text-center">Sorry - Looks like something has gone wrong, please try again</span>
+    </div>
+    <div class="container flex-column justify-content-start justify-content-md-start" id="satellite-response-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/chat-app.js"></script>
+</body>
+
+</html>

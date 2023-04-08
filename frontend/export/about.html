@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Chatellite</title>
+    <meta property="og:description" content="Natural language satellite orbit data. Say goodbye to troublesome TLEs and erratic ephemerides. Powered by ChatGPT!">
+    <meta property="og:title" content="Chatellite">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/img/android-chrome-512x512.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="#">Orbit Determinator</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h4>FAQs</h4>
+        <h5>Does this really use ChatGPT?</h5>
+        <p><strong>Yes.&nbsp; </strong>Nearly - It uses the OpenAI <em>completion&nbsp;</em>API (GPT3 "Davinci"). It is sent four prompts for every conversation. One to generate the greeting and three more to describe the places. The last three are sent in a single request so as to give it a chance to build up a narrative.</p>
+        <h5>Does ChatGPT really know where satellites are?</h5>
+        <p><strong>No. </strong>To figure this out, the public TLEs are gathered from&nbsp;<a href="https://celestrak.org/">Celestrak</a>. Then using <a href="https://rhodesmill.org/skyfield/">Skyfield</a>&nbsp;the Latitude and Longitude of the satellite for the next few hours are calculated.</p>
+        <p>To create a set of place names from these, a customised dataset created from the cultural data from&nbsp;<a href="https://www.naturalearthdata.com/">Natural Earth Data</a>&nbsp;is used along with GeoPandas to determine the real names of the places the satellite will pass over. These are then sent to the OpenAI API as part of the prompts.</p>
+        <h5>Have the models been trained (fine-tuned) specifically for this?</h5>
+        <p><strong>No. </strong>I did not have the time - these are just coming directly from the vanilla API.</p>
+        <h5>Are there any real practical uses for this?</h5>
+        <p><strong>None that I</strong>&nbsp;can think of<strong>.</strong></p>
+        <h5>Does this cost money?</h5>
+        <p><strong>Yes. </strong>OpenAI charges about $0.004 for each "conversation" (which, including prompts comes to about 200 tokens). There's a budget and when it's gone it's gone.</p>
+        <h5></h5>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/chat-app.js"></script>
+</body>
+
+</html>

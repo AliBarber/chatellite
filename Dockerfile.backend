@@ -1,0 +1,18 @@
+FROM debian:buster-slim AS data-downloader
+RUN apt-get update && apt-get -y install \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /naturalearthdata
+COPY Data/GeoData.zip ./
+RUN unzip GeoData.zip && rm GeoData.zip
+
+FROM python:3.11-slim-bullseye
+RUN python -m pip install --upgrade pip && python -m pip install poetry && poetry config virtualenvs.create false
+COPY --from=data-downloader /naturalearthdata/* /Data/
+ENV AREA_SHAPEFILE_PATH="/Data/merged-data.shp"
+WORKDIR /app
+COPY pyproject.toml poetry.lock ./
+RUN poetry install --no-dev --no-root
+COPY locator/ ./locator/ 
+CMD uvicorn locator.api:app --host 0.0.0.0 --port 8000

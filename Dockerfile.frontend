@@ -1,0 +1,9 @@
+FROM nginx:1.23.3
+RUN apt-get update && apt-get -y install \
+  sed \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY frontend/export/ /usr/share/nginx/html/
+
+COPY frontend/25-substitute-app-vars.sh /docker-entrypoint.d
+RUN chmod a+x /docker-entrypoint.d/25-substitute-app-vars.sh 
